@@ -11,13 +11,7 @@ import {
   TWorkerOutputMessage,
 } from './types';
 
-type TMessageErrorTarget = {
-  onmessageerror: ((this: Worker, ev: ErrorEvent) => any | void) | null;
-};
-
-// TODO: Use WorkerGlobalScope instead of Worker
-
-const ctx: Worker & TMessageErrorTarget = self as any;
+const ctx: DedicatedWorkerGlobalScope = self as any;
 
 let currentMeta: TLayoutWorkerMeta | null;
 

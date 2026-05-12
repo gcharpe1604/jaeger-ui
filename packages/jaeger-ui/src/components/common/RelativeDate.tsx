@@ -12,9 +12,7 @@ type Props = {
   value: number | Date;
 };
 
-// TODO typescript doesn't understand text or null as react nodes
-// https://github.com/Microsoft/TypeScript/issues/21699
-export default function RelativeDate(props: Props): React.JSX.Element {
+export default function RelativeDate(props: Props): React.ReactNode {
   const { value, includeTime, fullMonthName } = props;
   const m = dayjs.isDayjs(value) ? value : dayjs(value);
   const dateStr = formatRelativeDate(m, Boolean(fullMonthName));
